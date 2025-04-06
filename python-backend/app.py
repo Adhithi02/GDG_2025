@@ -3,15 +3,25 @@ from ultralytics import YOLO
 from PIL import Image
 import io
 import base64
+import os
+import gdown
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
 
-# Load your trained YOLO model
-model = YOLO('C:/Users/Adhithi C Iyer/Downloads/pythonbackend1/pythonbackend/best.pt')
+# 📦 Automatically download the model if not already present
+MODEL_PATH = 'best.pt'
+DRIVE_FILE_ID = '1zNKD-5tdaofMgqBvXEiLel-jD_VkZgG8'
 
-# Map mislabelled or plural class names to expected ones
+if not os.path.exists(MODEL_PATH):
+    print("Downloading best.pt from Google Drive...")
+    gdown.download(f"https://drive.google.com/uc?id={DRIVE_FILE_ID}", MODEL_PATH, quiet=False)
+
+# ✅ Load YOLO model
+model = YOLO(MODEL_PATH)
+
+# 🔤 Class mapping
 label_map = {
     'dog': 'dog',
     'dogs': 'dog',
@@ -53,7 +63,7 @@ def predict():
             top_score = score
             top_class = mapped_cls_name
 
-    # Annotated image as base64
+    # 📸 Encode annotated image
     annotated_frame = results[0].plot()
     buffered = io.BytesIO()
     Image.fromarray(annotated_frame).save(buffered, format="JPEG")
@@ -65,6 +75,5 @@ def predict():
         'top_class': top_class
     })
 
-# 🔧 Corrected main check here
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
