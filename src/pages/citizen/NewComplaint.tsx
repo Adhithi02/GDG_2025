@@ -29,7 +29,7 @@ const NewComplaint: React.FC = () => {
         setIsGettingLocation(true);
 
         // Send to Flask for prediction
-        const response = await fetch(' http://192.168.1.2:5000/predict', {
+        const response = await fetch('https://gdg-backend-i9g2.onrender.com/predict', {
           method: 'POST',
           body: formData,
         });
