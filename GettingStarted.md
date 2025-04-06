@@ -21,7 +21,7 @@ cd GDG_2025
 This project uses a YOLO-based model to classify complaint images like potholes and stray animals. The trained model file (`best.pt`) is **not included in the repository** due to size restrictions.
 
 🔗 **Download the model from Google Drive**  
-👉 [Click here to download best.pt](https://drive.google.com/file/d/1zNKD-5tdaofMgqBvXEiLel-jD_VkZgG8/view?usp=sharing)
+👉 [Click here to download best.pt](https://drive.google.com/drive/folders/1NO2-Hk0FxV5jT1j7NbkOl078xdooU9bt?usp=sharing)
 
 Once downloaded, move the file into the following directory:
 
