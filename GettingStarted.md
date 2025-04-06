@@ -53,7 +53,6 @@ python app.py
 Open a new terminal window or tab for the frontend:
 
 ```
-cd ../frontend
 npm install
 npm run dev
 ```
