@@ -3,3 +3,4 @@ flask-cors
 ultralytics
 Pillow
 gdown
+gunicorn
