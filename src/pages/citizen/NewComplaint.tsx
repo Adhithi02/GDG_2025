@@ -29,7 +29,7 @@ const NewComplaint: React.FC = () => {
         setIsGettingLocation(true);
 
         // Send to Flask for prediction
-        const response = await fetch('https://gdg-backend-i9g2.onrender.com/predict', {
+        const response = await fetch('http://127.0.0.1:5000/predict', {
           method: 'POST',
           body: formData,
         });
@@ -236,9 +236,12 @@ const NewComplaint: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <p className="mt-2 text-sm text-gray-500">
-                    Please upload a clear image of a pothole or a stray dog. The department will be assigned automatically.
-                  </p>
+                  {!image && (
+                    <p className="mt-2 text-sm text-gray-500">
+                           Please upload a clear image of a pothole or a stray dog. The department will be assigned automatically.
+                          </p>
+                        )}
+
                 </div>
 
                 <div>
